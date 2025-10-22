@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app {
+    text-align: center;
+}
+
+h1 {
+    padding: 40px;
+    background-color: #cf9963;
+    color: white;
+    font-family: math;
+}
+
+.canKartlari {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.bar {
+    border: 1px solid gray;
+    height: 30px;
+    max-width: 100%;
+    width: 300px;
+    border-radius: 20px;
+    margin: 6px auto;
+}
+
+.barValue {
+    background: #1ea723;
+    height: 100%;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.btns {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 8px 24px;
+    font-size: medium;
+    border-radius: 20px;
+    background: orangered;
+    color: white;
+}
+
+button:hover{
+    background-color: darkorange;
+}
+
+button:disabled{
+    background-color: gray;
+    color: black;
+}
+
+.superSaldiri {
+    background-color: darkred;
+}
+.canEkle {
+    background-color: green;
+}
+
+.sonuclar {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 200px;
+    gap: 10px;
+}
