@@ -14,6 +14,7 @@ const app = Vue.createApp ({
             btnSayac: 0,
             btnHazir: false,
             canEkleSayac: 0,
+            alertKart: true,
         };
     },
     methods: {

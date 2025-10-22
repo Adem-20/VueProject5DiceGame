@@ -1,48 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue JS || Zar oyunu</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-</head>
-<body id="app">
+  </head>
+  <body id="app">
     <header>
-        <h1> {{isim}} </h1>
+      <h1>{{isim}}</h1>
     </header>
     <section class="canKartlari">
-    <div class="Kullanici">
+
+      <div v-if="alertKart" class="alertDialog" @click.self="alertKart=false">
+        <div class="alert">
+          <h3>Bilgi!!</h3>
+          <p>
+            Süper saldırı butonu 4 kez saldırı yapıldıktan sonra aktif olur.
+            Kullanıldıktan sonra da diğer 4 saldırıya kadar kapanır!
+          </p>
+          <p>Can ekle butonu oyun boyunca sadece 2 kez kullanılabilir!</p>
+          <button @click="alertKart=false">Tamam</button>
+        </div>
+      </div>
+
+      <div class="Kullanici">
         <h2>Kullanici</h2>
         <div class="bar">
-            <div class="barValue" :style="kullaniciBarValue"></div>
-            <p>{{ kullanici > 0  ? kullanici : 0}}%</p>
+          <div class="barValue" :style="kullaniciBarValue"></div>
+          <p>{{ kullanici > 0 ? kullanici : 0}}%</p>
         </div>
-    </div>
+      </div>
 
-     <div class="bilgisayar">
+      <div class="bilgisayar">
         <h2>Bilgisayar</h2>
         <div class="bar">
-            <div class="barValue" :style="bilgisayarBarValue"></div>
-            <p>{{bilgisayar > 0 ? bilgisayar : 0}}%</p>
+          <div class="barValue" :style="bilgisayarBarValue"></div>
+          <p>{{bilgisayar > 0 ? bilgisayar : 0}}%</p>
         </div>
-    </div>
+      </div>
     </section>
 
-    <section class="btns"> 
-        <button @click="kullaniciAtak" :disabled="kazanan">Saldır</button>
-        <button @click="kalkan" :disabled="kazanan">Kalkan</button>
-        <button class="superSaldiri" @click="superSaldiri" :disabled="btnHazir || kazanan">Süper Saldırı</button>
-        <button class="canEkle" @click="canEkle" :disabled="kazanan || canEkleSayac >= 2">Can Ekle</button>
+    <section class="btns">
+      <button @click="kullaniciAtak" :disabled="kazanan">Saldır</button>
+      <button @click="kalkan" :disabled="kazanan">Kalkan</button>
+      <button
+        class="superSaldiri"
+        @click="superSaldiri"
+        :disabled="btnHazir || kazanan"
+      >
+        Süper Saldırı
+      </button>
+      <button
+        class="canEkle"
+        @click="canEkle"
+        :disabled="kazanan || canEkleSayac >= 2"
+      >
+        Can Ekle
+      </button>
     </section>
 
-    <section class="sonuclar">
-        <h3 v-show="kazanan === 'bilgisayar'">Bilgisayar Kazandı</h3>
-        <h3 v-show="kazanan === 'kullanici'">Sen Kazandın!</h3>
-        <h3 v-show="kazanan === 'beraber'">Berabere!</h3>
-        <button @click="yeniOyun" v-show="kazanan !== null">Yeni Oyun</button>
+    <section class="sonuclar" v-show="kazanan !== null">
+      <h3 v-show="kazanan === 'bilgisayar'">Bilgisayar Kazandı</h3>
+      <h3 v-show="kazanan === 'kullanici'">Sen Kazandın!</h3>
+      <h3 v-show="kazanan === 'beraber'">Berabere!</h3>
+      <button @click="yeniOyun" v-show="kazanan !== null">Yeni Oyun</button>
     </section>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
